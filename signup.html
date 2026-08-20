@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>GUDU MC | Sign Up</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-family:Arial,sans-serif;
+
+    background:
+    radial-gradient(
+        circle at 50% 20%,
+        #263d68 0%,
+        #11182c 45%,
+        #070a12 100%
+    );
+
+    color:white;
+
+    padding:20px;
+}
+
+.signup-box{
+
+    width:100%;
+    max-width:430px;
+
+    padding:35px;
+
+    background:rgba(15,22,40,.9);
+
+    border:1px solid rgba(120,150,255,.25);
+
+    border-radius:20px;
+
+    box-shadow:
+    0 0 40px rgba(70,100,255,.2),
+    0 20px 60px rgba(0,0,0,.5);
+
+    backdrop-filter:blur(15px);
+}
+
+.logo{
+
+    text-align:center;
+
+    font-size:42px;
+
+    font-weight:900;
+
+    letter-spacing:5px;
+
+    background:
+    linear-gradient(
+        90deg,
+        white,
+        #83a5ff,
+        white
+    );
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.subtitle{
+
+    text-align:center;
+
+    color:#9da9c4;
+
+    margin-top:8px;
+    margin-bottom:30px;
+}
+
+label{
+
+    display:block;
+
+    margin-bottom:7px;
+
+    color:#cbd4eb;
+
+    font-size:14px;
+}
+
+input{
+
+    width:100%;
+
+    padding:14px;
+
+    margin-bottom:18px;
+
+    border-radius:10px;
+
+    border:1px solid #293655;
+
+    background:#0b1120;
+
+    color:white;
+
+    outline:none;
+
+    font-size:15px;
+}
+
+input:focus{
+
+    border-color:#6685ff;
+
+    box-shadow:
+    0 0 12px rgba(102,133,255,.2);
+}
+
+.signup-btn{
+
+    width:100%;
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #5578ff,
+        #7655ff
+    );
+
+    color:white;
+
+    font-weight:bold;
+
+    font-size:16px;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.signup-btn:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:
+    0 0 25px rgba(85,120,255,.5);
+}
+
+.google-btn{
+
+    width:100%;
+
+    margin-top:12px;
+
+    padding:14px;
+
+    border-radius:10px;
+
+    border:1px solid #34415f;
+
+    background:#111a2d;
+
+    color:white;
+
+    font-size:15px;
+
+    cursor:pointer;
+}
+
+.google-btn:hover{
+    background:#18233b;
+}
+
+.divider{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    margin:22px 0;
+
+    color:#68738c;
+
+    font-size:12px;
+}
+
+.divider::before,
+.divider::after{
+
+    content:"";
+
+    height:1px;
+
+    flex:1;
+
+    background:#293655;
+}
+
+.message{
+
+    text-align:center;
+
+    margin-top:15px;
+
+    min-height:20px;
+
+    font-size:13px;
+}
+
+.login{
+
+    text-align:center;
+
+    margin-top:22px;
+
+    color:#8792aa;
+
+    font-size:14px;
+}
+
+.login a{
+
+    color:#7d9aff;
+
+    text-decoration:none;
+
+    font-weight:bold;
+}
+
+.back{
+
+    display:block;
+
+    text-align:center;
+
+    margin-top:20px;
+
+    color:#66718a;
+
+    text-decoration:none;
+
+    font-size:13px;
+}
+
+@media(max-width:500px){
+
+    .signup-box{
+        padding:25px 20px;
+    }
+
+    .logo{
+        font-size:35px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="signup-box">
+
+
+    <h1 class="logo">
+        GUDU MC
+    </h1>
+
+
+    <p class="subtitle">
+        Create your account
+    </p>
+
+
+    <form id="signupForm">
+
+
+        <label>
+            Name
+        </label>
+
+        <input
+            id="name"
+            type="text"
+            placeholder="Enter your name"
+            required
+        >
+
+
+        <label>
+            Email
+        </label>
+
+        <input
+            id="email"
+            type="email"
+            placeholder="Enter your email"
+            required
+        >
+
+
+        <label>
+            Password
+        </label>
+
+        <input
+            id="password"
+            type="password"
+            placeholder="Minimum 6 characters"
+            minlength="6"
+            required
+        >
+
+
+        <label>
+            Confirm Password
+        </label>
+
+        <input
+            id="confirmPassword"
+            type="password"
+            placeholder="Confirm your password"
+            minlength="6"
+            required
+        >
+
+
+        <button
+            type="submit"
+            class="signup-btn">
+
+            CREATE ACCOUNT
+
+        </button>
+
+    </form>
+
+
+    <div class="divider">
+        OR
+    </div>
+
+
+    <button
+        id="googleBtn"
+        class="google-btn">
+
+        🔵 Continue with Google
+
+    </button>
+
+
+    <div
+        id="message"
+        class="message">
+    </div>
+
+
+    <div class="login">
+
+        Already have an account?
+
+        <a href="login.html">
+            Login
+        </a>
+
+    </div>
+
+
+    <a
+        href="index.html"
+        class="back">
+
+        ← Back to GUDU MC
+
+    </a>
+
+
+</div>
+
+
+<script type="module">
+
+import {
+
+    auth,
+    googleProvider,
+    signInWithPopup,
+    createUserWithEmailAndPassword,
+    db,
+    doc,
+    setDoc
+
+} from "./js/firebase-config.js";
+
+
+const form =
+    document.getElementById("signupForm");
+
+const googleBtn =
+    document.getElementById("googleBtn");
+
+const message =
+    document.getElementById("message");
+
+
+/* EMAIL SIGN UP */
+
+form.addEventListener(
+    "submit",
+    async function(event){
+
+        event.preventDefault();
+
+        const name =
+            document.getElementById("name").value.trim();
+
+        const email =
+            document.getElementById("email").value.trim();
+
+        const password =
+            document.getElementById("password").value;
+
+        const confirmPassword =
+            document.getElementById("confirmPassword").value;
+
+
+        if(password !== confirmPassword){
+
+            message.innerText =
+                "❌ Passwords do not match.";
+
+            return;
+        }
+
+
+        message.innerText =
+            "Creating account...";
+
+
+        try{
+
+            const result =
+                await createUserWithEmailAndPassword(
+                    auth,
+                    email,
+                    password
+                );
+
+
+            const user =
+                result.user;
+
+
+            await setDoc(
+                doc(db,"users",user.uid),
+                {
+
+                    uid:user.uid,
+
+                    name:name,
+
+                    email:user.email,
+
+                    photoURL:"",
+
+                    createdAt:new Date()
+
+                }
+            );
+
+
+            window.location.href =
+                "dashboard.html";
+
+
+        }catch(error){
+
+            console.error(error);
+
+            message.innerText =
+                "❌ " + getErrorMessage(error.code);
+
+        }
+
+    }
+);
+
+
+/* GOOGLE SIGN UP */
+
+googleBtn.addEventListener(
+    "click",
+    async function(){
+
+        message.innerText =
+            "Opening Google...";
+
+
+        try{
+
+            const result =
+                await signInWithPopup(
+                    auth,
+                    googleProvider
+                );
+
+
+            const user =
+                result.user;
+
+
+            await setDoc(
+                doc(db,"users",user.uid),
+                {
+
+                    uid:user.uid,
+
+                    name:user.displayName || "GUDU MC Member",
+
+                    email:user.email,
+
+                    photoURL:user.photoURL || "",
+
+                    createdAt:new Date()
+
+                },
+
+                {
+                    merge:true
+                }
+            );
+
+
+            window.location.href =
+                "dashboard.html";
+
+
+        }catch(error){
+
+            console.error(error);
+
+            message.innerText =
+                "❌ " + getErrorMessage(error.code);
+
+        }
+
+    }
+);
+
+
+/* ERRORS */
+
+function getErrorMessage(code){
+
+    switch(code){
+
+        case "auth/email-already-in-use":
+            return "This email already has an account.";
+
+        case "auth/weak-password":
+            return "Password must be at least 6 characters.";
+
+        case "auth/invalid-email":
+            return "Please enter a valid email.";
+
+        case "auth/popup-closed-by-user":
+            return "Google signup was cancelled.";
+
+        case "auth/popup-blocked":
+            return "Your browser blocked the Google popup.";
+
+        case "auth/unauthorized-domain":
+            return "This website is not authorized in Firebase.";
+
+        default:
+            return "Something went wrong. Please try again.";
+
+    }
+
+}
+
+</script>
+
+
+</body>
+</html>
