@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>GUDU MC | Staff Apply</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    min-height:100vh;
+    font-family:Arial,sans-serif;
+    color:white;
+    background:
+    radial-gradient(circle at 50% 10%,#263d68 0%,#11182c 45%,#070a12 100%);
+    padding:20px;
+}
+
+.topbar{
+    max-width:1200px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 20px;
+    background:rgba(10,16,30,.8);
+    border:1px solid rgba(120,150,255,.25);
+    border-radius:15px;
+    backdrop-filter:blur(15px);
+}
+
+.logo{
+    font-size:24px;
+    font-weight:900;
+    letter-spacing:4px;
+    background:linear-gradient(90deg,#fff,#83a5ff,#fff);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.profile{
+    width:44px;
+    height:44px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#18233d;
+    border:2px solid #718cff;
+    text-decoration:none;
+    font-size:20px;
+}
+
+.container{
+    max-width:1150px;
+    margin:55px auto;
+    text-align:center;
+}
+
+.small-title{
+    color:#8ea7ff;
+    letter-spacing:4px;
+    font-size:13px;
+    margin-bottom:12px;
+}
+
+h1{
+    font-size:clamp(40px,7vw,70px);
+    font-weight:900;
+    letter-spacing:3px;
+}
+
+.subtitle{
+    max-width:650px;
+    margin:15px auto 45px;
+    color:#8f9bb4;
+    line-height:1.7;
+}
+
+/* RANK GRID */
+
+.rank-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+}
+
+.rank-card{
+    position:relative;
+    min-height:270px;
+    padding:30px 20px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    border-radius:22px;
+
+    background:
+    linear-gradient(145deg,#192541,#0b1120);
+
+    border:1px solid rgba(120,150,255,.25);
+
+    box-shadow:
+    0 20px 40px rgba(0,0,0,.4);
+
+    cursor:pointer;
+
+    overflow:hidden;
+
+    transform-style:preserve-3d;
+
+    transition:.4s;
+}
+
+.rank-card::before{
+    content:"";
+    position:absolute;
+
+    width:170px;
+    height:170px;
+
+    border-radius:50%;
+
+    background:#5d7cff;
+
+    filter:blur(70px);
+
+    opacity:.15;
+
+    top:-80px;
+    right:-70px;
+}
+
+.rank-card:hover{
+    transform:
+    perspective(700px)
+    rotateX(5deg)
+    rotateY(-5deg)
+    translateY(-12px)
+    scale(1.03);
+
+    border-color:#718cff;
+
+    box-shadow:
+    0 25px 60px rgba(80,110,255,.3);
+}
+
+.rank-icon{
+    font-size:60px;
+    margin-bottom:18px;
+
+    filter:drop-shadow(0 0 15px rgba(110,140,255,.6));
+}
+
+.rank-name{
+    font-size:28px;
+    font-weight:900;
+    letter-spacing:2px;
+
+    text-shadow:
+    0 4px 0 #11182c,
+    0 0 20px rgba(120,150,255,.4);
+}
+
+.rank-description{
+    color:#8d99b3;
+    font-size:13px;
+    margin-top:10px;
+}
+
+.click-text{
+    margin-top:20px;
+    color:#91a5ff;
+    font-size:12px;
+    font-weight:bold;
+    letter-spacing:1px;
+}
+
+/* APPLICATION FORM */
+
+#applicationSection{
+    display:none;
+    margin-top:60px;
+    text-align:left;
+}
+
+.form-box{
+    max-width:850px;
+    margin:auto;
+
+    padding:35px;
+
+    border-radius:22px;
+
+    background:rgba(15,22,40,.9);
+
+    border:1px solid rgba(120,150,255,.25);
+
+    box-shadow:0 20px 60px rgba(0,0,0,.45);
+}
+
+.form-title{
+    text-align:center;
+    margin-bottom:10px;
+    font-size:30px;
+}
+
+.form-subtitle{
+    text-align:center;
+    color:#8995ae;
+    margin-bottom:30px;
+}
+
+.question{
+    margin-bottom:22px;
+}
+
+.question label{
+    display:block;
+    margin-bottom:8px;
+    font-weight:bold;
+    color:#dce3f5;
+}
+
+.question textarea,
+.question input,
+.question select{
+    width:100%;
+
+    padding:14px;
+
+    border-radius:10px;
+
+    border:1px solid #2d3b5b;
+
+    background:#0a1020;
+
+    color:white;
+
+    outline:none;
+
+    font-family:Arial,sans-serif;
+
+    font-size:14px;
+}
+
+.question textarea{
+    min-height:110px;
+    resize:vertical;
+}
+
+.question textarea:focus,
+.question input:focus,
+.question select:focus{
+    border-color:#718cff;
+    box-shadow:0 0 15px rgba(100,130,255,.15);
+}
+
+.required{
+    color:#ff6678;
+}
+
+.submit{
+    width:100%;
+    padding:16px;
+
+    border:0;
+    border-radius:11px;
+
+    color:white;
+
+    font-size:16px;
+    font-weight:bold;
+
+    cursor:pointer;
+
+    background:linear-gradient(135deg,#5578ff,#7655ff);
+
+    transition:.3s;
+}
+
+.submit:hover{
+    transform:translateY(-3px);
+    box-shadow:0 0 30px rgba(85,120,255,.45);
+}
+
+.back{
+    display:block;
+    text-align:center;
+    margin-top:20px;
+    color:#77839c;
+    text-decoration:none;
+}
+
+/* MOBILE */
+
+@media(max-width:850px){
+    .rank-grid{
+        grid-template-columns:1fr 1fr;
+    }
+}
+
+@media(max-width:600px){
+    body{
+        padding:12px;
+    }
+
+    .rank-grid{
+        grid-template-columns:1fr;
+    }
+
+    .form-box{
+        padding:25px 18px;
+    }
+
+    .logo{
+        font-size:20px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="topbar">
+
+    <div class="logo">
+        GUDU MC
+    </div>
+
+    <a href="profile.html" class="profile">
+        👤
+    </a>
+
+</header>
+
+
+<main class="container">
+
+    <div class="small-title">
+        GUDU MC STAFF TEAM
+    </div>
+
+    <h1>
+        CHOOSE YOUR RANK
+    </h1>
+
+    <p class="subtitle">
+        Choose the staff position you want to apply for.
+        Every rank has different questions and difficulty.
+    </p>
+
+
+    <!-- RANKS -->
+
+    <section class="rank-grid">
+
+        <div class="rank-card" onclick="openApplication('Moderator')">
+            <div class="rank-icon">🛡️</div>
+            <div class="rank-name">MODERATOR</div>
+            <div class="rank-description">
+                Help players and enforce server rules.
+            </div>
+            <div class="click-text">CLICK TO APPLY →</div>
+        </div>
+
+
+        <div class="rank-card" onclick="openApplication('Builder')">
+            <div class="rank-icon">🔨</div>
+            <div class="rank-name">BUILDER</div>
+            <div class="rank-description">
+                Build amazing structures for GUDU MC.
+            </div>
+            <div class="click-text">CLICK TO APPLY →</div>
+        </div>
+
+
+        <div class="rank-card" onclick="openApplication('Support')">
+            <div class="rank-icon">🎫</div>
+            <div class="rank-name">SUPPORT</div>
+            <div class="rank-description">
+                Help players with questions and problems.
+            </div>
+            <div class="click-text">CLICK TO APPLY →</div>
+        </div>
+
+
+        <div class="rank-card" onclick="openApplication('Admin')">
+            <div class="rank-icon">⚔️</div>
+            <div class="rank-name">ADMIN</div>
+            <div class="rank-description">
+                Manage serious situations and staff issues.
+            </div>
+            <div class="click-text">CLICK TO APPLY →</div>
+        </div>
+
+
+        <div class="rank-card" onclick="openApplication('Manager')">
+            <div class="rank-icon">👑</div>
+            <div class="rank-name">MANAGER</div>
+            <div class="rank-description">
+                Lead the staff team and manage operations.
+            </div>
+            <div class="click-text">CLICK TO APPLY →</div>
+        </div>
+
+
+        <div class="rank-card" onclick="openApplication('Trial Moderator')">
+            <div class="rank-icon">⭐</div>
+            <div class="rank-name">TRIAL MOD</div>
+            <div class="rank-description">
+                Start your journey as a new staff member.
+            </div>
+            <div class="click-text">CLICK TO APPLY →</div>
+        </div>
+
+    </section>
+
+
+    <!-- QUESTIONS -->
+
+    <section id="applicationSection">
+
+        <div class="form-box">
+
+            <h2 class="form-title">
+                <span id="selectedRank">
+                    STAFF
+                </span>
+                APPLICATION
+            </h2>
+
+            <p class="form-subtitle">
+                Answer every question honestly and carefully.
+            </p>
+
+
+            <form id="applicationForm">
+
+                <div class="question">
+
+                    <label>
+                        Minecraft / Bloxd Username
+                        <span class="required">*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="username"
+                        required
+                        placeholder="Enter your username">
+
+                </div>
+
+
+                <div class="question">
+
+                    <label>
+                        Discord Username
+                        <span class="required">*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="discord"
+                        required
+                        placeholder="example: username">
+
+                </div>
+
+
+                <div class="question">
+
+                    <label>
+                        How old are you?
+                        <span class="required">*</span>
+                    </label>
+
+                    <input
+                        type="number"
+                        id="age"
+                        min="10"
+                        max="100"
+                        required
+                        placeholder="Your age">
+
+                </div>
+
+
+                <!-- DYNAMIC QUESTIONS -->
+
+                <div id="dynamicQuestions"></div>
+
+
+                <button
+                    type="submit"
+                    class="submit">
+                    🚀 SUBMIT APPLICATION
+                </button>
+
+                <a href="dashboard.html" class="back">
+                    ← Back to Dashboard
+                </a>
+
+            </form>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<script>
+
+let selectedRank = "";
+
+
+/* QUESTIONS */
+
+const rankQuestions = {
+
+    "Moderator":[
+        "Why do you want to become a Moderator?",
+        "A player is repeatedly breaking the rules. What would you do?",
+        "Two players are arguing and both are blaming each other. How would you handle it?",
+        "A player accuses another player of cheating but provides no evidence. What would you do?",
+        "What makes someone a good Moderator?",
+        "What would you do if your friend broke a server rule?"
+    ],
+
+    "Builder":[
+        "Why do you want to become a Builder?",
+        "How experienced are you with building?",
+        "What building styles are you comfortable with?",
+        "How would you design a new server spawn?",
+        "How do you respond when another staff member criticizes your build?",
+        "Provide a portfolio or screenshots of your previous builds."
+    ],
+
+    "Support":[
+        "Why do you want to join the Support team?",
+        "A new player cannot join the server. How would you help them?",
+        "A player becomes angry because you cannot solve their problem immediately. What would you do?",
+        "What would you do if you don't know the answer to a player's question?",
+        "How would you report a serious issue to higher staff?",
+        "What qualities should a good Support member have?"
+    ],
+
+    "Admin":[
+        "Why do you believe you are ready for an Admin position?",
+        "How would you investigate a serious player report?",
+        "What would you do if another staff member abused their permissions?",
+        "A player is falsely accused by several people. How would you investigate the situation?",
+        "How would you handle a conflict between two staff members?",
+        "What would you change or improve about the GUDU MC staff team?",
+        "Describe a difficult situation you have handled and how you solved it."
+    ],
+
+    "Manager":[
+        "Why should you become a Manager?",
+        "How would you manage an inactive staff team?",
+        "How would you decide whether a staff member deserves a promotion?",
+        "Two staff members have a serious conflict. Explain exactly how you would resolve it.",
+        "A Moderator makes a major mistake. What steps would you take?",
+        "How would you improve staff activity and teamwork?",
+        "What would your long-term plan be for the GUDU MC staff team?",
+        "Why should GUDU MC trust you with a leadership position?"
+    ],
+
+    "Trial Moderator":[
+        "Why do you want to become a Trial Moderator?",
+        "What server rules are most important to you?",
+        "What would you do if you saw someone breaking a rule?",
+        "How would you deal with a rude player?",
+        "What would you do if you made a mistake while moderating?",
+        "Why should we choose you?"
+    ]
+
+};
+
+
+/* OPEN APPLICATION */
+
+function openApplication(rank){
+
+    selectedRank = rank;
+
+    document.getElementById("selectedRank").innerText =
+        rank.toUpperCase();
+
+    const questions =
+        rankQuestions[rank];
+
+    const container =
+        document.getElementById("dynamicQuestions");
+
+    container.innerHTML = "";
+
+
+    questions.forEach((question,index)=>{
+
+        const div =
+            document.createElement("div");
+
+        div.className = "question";
+
+        div.innerHTML = `
+
+            <label>
+                ${index + 1}. ${question}
+                <span class="required">*</span>
+            </label>
+
+            <textarea
+                required
+                name="question${index + 1}"
+                placeholder="Write your answer here..."></textarea>
+
+        `;
+
+        container.appendChild(div);
+
+    });
+
+
+    document.getElementById("applicationSection")
+        .style.display = "block";
+
+
+    document.getElementById("applicationSection")
+        .scrollIntoView({
+            behavior:"smooth"
+        });
+
+}
+
+
+/* SUBMIT */
+
+document.getElementById("applicationForm")
+.addEventListener("submit",function(event){
+
+    event.preventDefault();
+
+    alert(
+        "Application ready! Firebase database connection will be added next."
+    );
+
+});
+
+</script>
+
+</body>
+</html>
