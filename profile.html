@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>GUDU MC | Profile</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    min-height:100vh;
+    font-family:Arial,sans-serif;
+    color:white;
+
+    background:
+    radial-gradient(circle at 50% 10%,#263d68 0%,#11182c 45%,#070a12 100%);
+
+    padding:25px;
+}
+
+/* TOP BAR */
+
+.topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    max-width:1100px;
+    margin:auto;
+
+    padding:15px 20px;
+
+    background:rgba(10,16,30,.75);
+
+    border:1px solid rgba(120,150,255,.2);
+
+    border-radius:15px;
+
+    backdrop-filter:blur(12px);
+}
+
+.logo{
+    font-size:24px;
+    font-weight:900;
+    letter-spacing:3px;
+
+    background:linear-gradient(
+        90deg,
+        white,
+        #83a5ff,
+        white
+    );
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+/* PROFILE */
+
+.container{
+    max-width:650px;
+    margin:50px auto;
+}
+
+.profile-card{
+    text-align:center;
+
+    background:rgba(15,22,40,.88);
+
+    border:1px solid rgba(120,150,255,.25);
+
+    border-radius:25px;
+
+    padding:40px 30px;
+
+    box-shadow:
+    0 0 40px rgba(70,100,255,.15),
+    0 20px 60px rgba(0,0,0,.5);
+
+    backdrop-filter:blur(15px);
+
+    animation:show .8s ease;
+}
+
+@keyframes show{
+
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+/* DP */
+
+.avatar-wrapper{
+    position:relative;
+
+    width:140px;
+    height:140px;
+
+    margin:0 auto 20px;
+}
+
+.avatar{
+    width:140px;
+    height:140px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    border:4px solid #718cff;
+
+    box-shadow:
+    0 0 25px rgba(90,120,255,.6);
+
+    background:#111a2d;
+}
+
+.upload-label{
+    position:absolute;
+
+    right:2px;
+    bottom:2px;
+
+    width:40px;
+    height:40px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    border-radius:50%;
+
+    background:#5578ff;
+
+    cursor:pointer;
+
+    font-size:18px;
+
+    border:3px solid #10172a;
+}
+
+#photoInput{
+    display:none;
+}
+
+/* NAME */
+
+.name{
+    font-size:30px;
+    font-weight:800;
+
+    margin-top:10px;
+}
+
+.email{
+    color:#8995ae;
+    margin-top:6px;
+}
+
+/* BUTTONS */
+
+.buttons{
+    margin-top:30px;
+}
+
+.btn{
+    width:100%;
+
+    padding:15px;
+
+    margin-top:12px;
+
+    border-radius:12px;
+
+    border:none;
+
+    cursor:pointer;
+
+    color:white;
+
+    font-size:15px;
+
+    font-weight:bold;
+
+    transition:.3s;
+}
+
+.btn:hover{
+    transform:translateY(-3px);
+}
+
+.edit{
+    background:#1b2742;
+    border:1px solid #34456c;
+}
+
+.applications{
+    background:linear-gradient(
+        135deg,
+        #5578ff,
+        #7655ff
+    );
+
+    box-shadow:
+    0 0 20px rgba(85,120,255,.25);
+}
+
+.logout{
+    background:#351923;
+    border:1px solid #6b3040;
+}
+
+/* BACK */
+
+.back{
+    display:block;
+
+    margin-top:25px;
+
+    color:#7e8aa5;
+
+    text-decoration:none;
+
+    font-size:14px;
+}
+
+.back:hover{
+    color:white;
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+    body{
+        padding:15px;
+    }
+
+    .profile-card{
+        padding:30px 20px;
+    }
+
+    .topbar{
+        padding:13px 15px;
+    }
+
+    .logo{
+        font-size:20px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- TOP BAR -->
+
+<header class="topbar">
+
+    <div class="logo">
+        GUDU MC
+    </div>
+
+    <div>
+        👤
+    </div>
+
+</header>
+
+
+<!-- PROFILE -->
+
+<main class="container">
+
+<section class="profile-card">
+
+    <!-- PROFILE PHOTO -->
+
+    <div class="avatar-wrapper">
+
+        <img
+            id="profilePhoto"
+            class="avatar"
+            src="https://via.placeholder.com/140"
+            alt="Profile Picture"
+        >
+
+        <label
+            for="photoInput"
+            class="upload-label">
+            📷
+        </label>
+
+        <input
+            type="file"
+            id="photoInput"
+            accept="image/*"
+        >
+
+    </div>
+
+
+    <!-- USER INFO -->
+
+    <h1
+        class="name"
+        id="userName">
+        GUDU PLAYER
+    </h1>
+
+    <p
+        class="email"
+        id="userEmail">
+        user@example.com
+    </p>
+
+
+    <!-- BUTTONS -->
+
+    <div class="buttons">
+
+        <button
+            class="btn edit"
+            onclick="editName()">
+            ✏️ EDIT PROFILE
+        </button>
+
+        <button
+            class="btn applications"
+            onclick="openApplications()">
+            📋 MY APPLICATIONS
+        </button>
+
+        <button
+            class="btn logout"
+            onclick="logout()">
+            🚪 LOGOUT
+        </button>
+
+    </div>
+
+
+    <a
+        href="dashboard.html"
+        class="back">
+        ← Back to Dashboard
+    </a>
+
+</section>
+
+</main>
+
+
+<script>
+
+/* PHOTO PREVIEW */
+
+const photoInput =
+    document.getElementById("photoInput");
+
+const profilePhoto =
+    document.getElementById("profilePhoto");
+
+
+photoInput.addEventListener("change", function(){
+
+    const file = this.files[0];
+
+    if(file){
+
+        const reader =
+            new FileReader();
+
+        reader.onload = function(e){
+
+            profilePhoto.src =
+                e.target.result;
+
+        };
+
+        reader.readAsDataURL(file);
+    }
+
+});
+
+
+/* EDIT NAME */
+
+function editName(){
+
+    const currentName =
+        document.getElementById("userName").innerText;
+
+    const newName =
+        prompt("Enter your new name:",currentName);
+
+    if(newName && newName.trim() !== ""){
+
+        document.getElementById("userName").innerText =
+            newName.trim();
+
+    }
+
+}
+
+
+/* APPLICATIONS */
+
+function openApplications(){
+
+    alert("My Applications will be connected in the next step.");
+
+}
+
+
+/* LOGOUT */
+
+function logout(){
+
+    alert("Logout will be connected with Firebase in the next step.");
+
+}
+
+</script>
+
+</body>
+</html>
