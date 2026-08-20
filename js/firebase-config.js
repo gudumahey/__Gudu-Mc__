@@ -1,13 +1,11 @@
 // ==========================================
-// GUDU MC STAFF - FIREBASE CONFIG
+// GUDU MC - FIREBASE CONFIG
 // ==========================================
 
-// Firebase App
 import {
     initializeApp
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
-// Firebase Authentication
 import {
     getAuth,
     GoogleAuthProvider,
@@ -18,7 +16,6 @@ import {
     onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
-// Firebase Firestore
 import {
     getFirestore,
     collection,
@@ -34,7 +31,6 @@ import {
     serverTimestamp
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-// Firebase Storage
 import {
     getStorage,
     ref,
@@ -49,32 +45,26 @@ import {
 
 const firebaseConfig = {
 
-    apiKey: "AIzaSyBIseL_AlvinVMSZGlChbkqzZzm28OChis",
+    apiKey: "YOUR_OLD_FIREBASE_API_KEY",
 
-    authDomain: "gudu-mc-staff.firebaseapp.com",
+    authDomain: "gudu-mc-c1681.firebaseapp.com",
 
-    projectId: "gudu-mc-staff",
+    projectId: "gudu-mc-c1681",
 
-    storageBucket: "gudu-mc-staff.firebasestorage.app",
+    storageBucket: "YOUR_OLD_STORAGE_BUCKET",
 
-    messagingSenderId: "855553553216",
+    messagingSenderId: "YOUR_OLD_SENDER_ID",
 
-    appId: "1:855553553216:web:2a4bb778de73da64a480a5",
+    appId: "YOUR_OLD_APP_ID"
 
-    measurementId: "G-QP7VGMLF8R"
 };
 
 
 // ==========================================
-// INITIALIZE FIREBASE
+// INITIALIZE
 // ==========================================
 
 const app = initializeApp(firebaseConfig);
-
-
-// ==========================================
-// SERVICES
-// ==========================================
 
 const auth = getAuth(app);
 
@@ -84,14 +74,14 @@ const storage = getStorage(app);
 
 
 // ==========================================
-// GOOGLE LOGIN
+// GOOGLE
 // ==========================================
 
 const googleProvider = new GoogleAuthProvider();
 
 
 // ==========================================
-// EXPORT EVERYTHING
+// EXPORT
 // ==========================================
 
 export {
