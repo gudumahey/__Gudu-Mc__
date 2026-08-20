@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>GUDU MC | Dashboard</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    min-height:100vh;
+    font-family:Arial,sans-serif;
+    color:white;
+
+    background:
+    radial-gradient(circle at 50% 10%,#263d68 0%,#11182c 45%,#070a12 100%);
+
+    padding:20px;
+}
+
+/* TOP BAR */
+
+.topbar{
+    max-width:1200px;
+    margin:auto;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:15px 20px;
+
+    background:rgba(10,16,30,.75);
+
+    border:1px solid rgba(120,150,255,.2);
+
+    border-radius:15px;
+
+    backdrop-filter:blur(12px);
+}
+
+.logo{
+    font-size:25px;
+    font-weight:900;
+    letter-spacing:4px;
+
+    background:linear-gradient(
+        90deg,
+        white,
+        #83a5ff,
+        white
+    );
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+/* PROFILE ICON */
+
+.profile{
+    width:45px;
+    height:45px;
+
+    border-radius:50%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:#1a2640;
+
+    border:2px solid #718cff;
+
+    text-decoration:none;
+
+    font-size:21px;
+
+    transition:.3s;
+}
+
+.profile:hover{
+    transform:scale(1.1);
+
+    box-shadow:
+    0 0 20px rgba(100,130,255,.6);
+}
+
+/* MAIN */
+
+.container{
+    max-width:1100px;
+    margin:70px auto;
+
+    text-align:center;
+}
+
+.welcome{
+    color:#8ea7ff;
+
+    letter-spacing:4px;
+
+    font-size:14px;
+
+    margin-bottom:12px;
+}
+
+h1{
+    font-size:clamp(38px,7vw,75px);
+
+    font-weight:900;
+
+    letter-spacing:4px;
+
+    background:linear-gradient(
+        90deg,
+        white,
+        #83a5ff,
+        white
+    );
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.subtitle{
+    color:#9ba7c0;
+
+    max-width:650px;
+
+    margin:15px auto 50px;
+
+    line-height:1.7;
+}
+
+/* APPLICATION GRID */
+
+.application-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(3,1fr);
+
+    gap:25px;
+
+}
+
+/* CARDS */
+
+.card{
+
+    min-height:280px;
+
+    padding:35px 25px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    border-radius:22px;
+
+    background:
+    linear-gradient(
+        145deg,
+        rgba(25,37,65,.95),
+        rgba(10,15,28,.95)
+    );
+
+    border:1px solid rgba(120,150,255,.25);
+
+    box-shadow:
+    0 15px 40px rgba(0,0,0,.35);
+
+    transition:.4s;
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.card::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:180px;
+    height:180px;
+
+    background:#587cff;
+
+    filter:blur(80px);
+
+    opacity:.12;
+
+    top:-80px;
+    right:-80px;
+
+}
+
+.card:hover{
+
+    transform:
+    translateY(-12px)
+    scale(1.02);
+
+    border-color:#718cff;
+
+    box-shadow:
+    0 20px 60px rgba(80,110,255,.25);
+}
+
+.icon{
+
+    font-size:60px;
+
+    margin-bottom:20px;
+
+    filter:
+    drop-shadow(
+        0 0 15px
+        rgba(120,150,255,.5)
+    );
+
+}
+
+.card h2{
+
+    font-size:25px;
+
+    margin-bottom:10px;
+
+    letter-spacing:1px;
+
+}
+
+.card p{
+
+    color:#8d99b3;
+
+    font-size:14px;
+
+    line-height:1.6;
+
+    margin-bottom:25px;
+
+}
+
+/* BUTTON */
+
+.apply-btn{
+
+    padding:12px 25px;
+
+    border-radius:10px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #5578ff,
+        #7655ff
+    );
+
+    color:white;
+
+    text-decoration:none;
+
+    font-weight:bold;
+
+    transition:.3s;
+
+}
+
+.apply-btn:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:
+    0 0 25px
+    rgba(85,120,255,.5);
+
+}
+
+/* MOBILE */
+
+@media(max-width:850px){
+
+    .application-grid{
+
+        grid-template-columns:
+        1fr;
+
+    }
+
+    .card{
+
+        min-height:240px;
+
+    }
+
+}
+
+@media(max-width:500px){
+
+    body{
+        padding:12px;
+    }
+
+    .container{
+        margin:50px auto;
+    }
+
+    .logo{
+        font-size:20px;
+    }
+
+    .profile{
+        width:40px;
+        height:40px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- TOP BAR -->
+
+<header class="topbar">
+
+    <div class="logo">
+        GUDU MC
+    </div>
+
+    <a
+        href="profile.html"
+        class="profile"
+        title="My Profile">
+        👤
+    </a>
+
+</header>
+
+
+<!-- MAIN -->
+
+<main class="container">
+
+    <div class="welcome">
+        WELCOME TO GUDU MC
+    </div>
+
+    <h1>
+        APPLICATION CENTER
+    </h1>
+
+    <p class="subtitle">
+        Choose an application below and start your journey
+        with the GUDU MC team.
+    </p>
+
+
+    <!-- APPLICATIONS -->
+
+    <section class="application-grid">
+
+
+        <!-- STAFF -->
+
+        <div class="card">
+
+            <div class="icon">
+                🛡️
+            </div>
+
+            <h2>
+                STAFF APPLY
+            </h2>
+
+            <p>
+                Apply to join the official
+                GUDU MC staff team.
+            </p>
+
+            <a
+                href="staff.html"
+                class="apply-btn">
+                APPLY NOW
+            </a>
+
+        </div>
+
+
+        <!-- YOUTUBER -->
+
+        <div class="card">
+
+            <div class="icon">
+                🎥
+            </div>
+
+            <h2>
+                YOUTUBER APPLY
+            </h2>
+
+            <p>
+                Are you a content creator?
+                Apply for the YouTuber rank.
+            </p>
+
+            <a
+                href="youtuber.html"
+                class="apply-btn">
+                APPLY NOW
+            </a>
+
+        </div>
+
+
+        <!-- MEDIA -->
+
+        <div class="card">
+
+            <div class="icon">
+                🎬
+            </div>
+
+            <h2>
+                MEDIA APPLY
+            </h2>
+
+            <p>
+                Join the GUDU MC media team
+                and create amazing content.
+            </p>
+
+            <a
+                href="media.html"
+                class="apply-btn">
+                APPLY NOW
+            </a>
+
+        </div>
+
+
+    </section>
+
+</main>
+
+</body>
+</html>
