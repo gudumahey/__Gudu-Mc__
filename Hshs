@@ -15,3 +15,11 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+const firebaseConfig = {
+  apiKey: "AIzaSyAJtiPsf1vx_KmznFFEhiHbtQGmdIxGv9k",
+  authDomain: "gudu-mc-c1681.firebaseapp.com",
+  projectId: "gudu-mc-c1681",
+  storageBucket: "gudu-mc-c1681.firebasestorage.app",
+  messagingSenderId: "886551667549",
+  appId: "1:886551667549:web:4b32d0aeb7acb2c100feb4"
+};
