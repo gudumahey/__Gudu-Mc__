@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 <title>GUDU MC | Login</title>
 
@@ -16,7 +19,9 @@
 }
 
 body{
+
     min-height:100vh;
+
     display:flex;
     justify-content:center;
     align-items:center;
@@ -24,13 +29,17 @@ body{
     font-family:Arial,sans-serif;
 
     background:
-    radial-gradient(circle at 50% 20%,#263d68 0%,#11182c 45%,#070a12 100%);
+    radial-gradient(
+        circle at 50% 20%,
+        #263d68 0%,
+        #11182c 45%,
+        #070a12 100%
+    );
 
     color:white;
+
     padding:20px;
 }
-
-/* LOGIN BOX */
 
 .login-box{
 
@@ -68,8 +77,6 @@ body{
 
 }
 
-/* TITLE */
-
 .logo{
 
     text-align:center;
@@ -80,7 +87,8 @@ body{
 
     letter-spacing:5px;
 
-    background:linear-gradient(
+    background:
+    linear-gradient(
         90deg,
         white,
         #83a5ff,
@@ -89,7 +97,6 @@ body{
 
     -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
-
 }
 
 .subtitle{
@@ -100,10 +107,7 @@ body{
 
     margin-top:8px;
     margin-bottom:30px;
-
 }
-
-/* INPUTS */
 
 label{
 
@@ -114,7 +118,6 @@ label{
     color:#cbd4eb;
 
     font-size:14px;
-
 }
 
 input{
@@ -136,18 +139,15 @@ input{
     outline:none;
 
     font-size:15px;
-
 }
 
 input:focus{
 
     border-color:#6685ff;
 
-    box-shadow:0 0 12px rgba(102,133,255,.2);
-
+    box-shadow:
+    0 0 12px rgba(102,133,255,.2);
 }
-
-/* LOGIN BUTTON */
 
 .login-btn{
 
@@ -159,7 +159,8 @@ input:focus{
 
     border-radius:10px;
 
-    background:linear-gradient(
+    background:
+    linear-gradient(
         135deg,
         #5578ff,
         #7655ff
@@ -174,18 +175,15 @@ input:focus{
     cursor:pointer;
 
     transition:.3s;
-
 }
 
 .login-btn:hover{
 
     transform:translateY(-2px);
 
-    box-shadow:0 0 25px rgba(85,120,255,.5);
-
+    box-shadow:
+    0 0 25px rgba(85,120,255,.5);
 }
-
-/* GOOGLE */
 
 .google-btn{
 
@@ -212,10 +210,7 @@ input:focus{
 .google-btn:hover{
 
     background:#18233b;
-
 }
-
-/* DIVIDER */
 
 .divider{
 
@@ -230,7 +225,6 @@ input:focus{
     color:#68738c;
 
     font-size:12px;
-
 }
 
 .divider::before,
@@ -243,10 +237,7 @@ input:focus{
     flex:1;
 
     background:#293655;
-
 }
-
-/* SIGNUP */
 
 .signup{
 
@@ -257,7 +248,6 @@ input:focus{
     color:#8792aa;
 
     font-size:14px;
-
 }
 
 .signup a{
@@ -267,10 +257,7 @@ input:focus{
     text-decoration:none;
 
     font-weight:bold;
-
 }
-
-/* BACK */
 
 .back{
 
@@ -285,23 +272,27 @@ input:focus{
     text-decoration:none;
 
     font-size:13px;
-
 }
 
-/* MOBILE */
+.message{
+
+    text-align:center;
+
+    margin-top:15px;
+
+    font-size:13px;
+
+    min-height:20px;
+}
 
 @media(max-width:500px){
 
     .login-box{
-
         padding:25px 20px;
-
     }
 
     .logo{
-
         font-size:35px;
-
     }
 
 }
@@ -310,71 +301,243 @@ input:focus{
 
 </head>
 
+
 <body>
 
+
 <div class="login-box">
+
 
     <h1 class="logo">
         GUDU MC
     </h1>
 
+
     <p class="subtitle">
         Login to continue
     </p>
 
-    <form>
+
+    <form id="loginForm">
+
 
         <label>
             Email
         </label>
 
         <input
+            id="email"
             type="email"
             placeholder="Enter your email"
             required
         >
+
 
         <label>
             Password
         </label>
 
         <input
+            id="password"
             type="password"
             placeholder="Enter your password"
             required
         >
 
+
         <button
             type="submit"
             class="login-btn">
+
             LOGIN
+
         </button>
 
     </form>
+
 
     <div class="divider">
         OR
     </div>
 
-    <button class="google-btn">
+
+    <button
+        id="googleBtn"
+        class="google-btn">
+
         🔵 Continue with Google
+
     </button>
+
+
+    <div
+        id="message"
+        class="message">
+    </div>
+
 
     <div class="signup">
 
         Don't have an account?
 
-        <a href="#">
+        <a href="signup.html">
             Sign Up
         </a>
 
     </div>
 
-    <a href="index.html" class="back">
+
+    <a
+        href="index.html"
+        class="back">
+
         ← Back to GUDU MC
+
     </a>
 
+
 </div>
+
+
+<!-- FIREBASE -->
+
+<script type="module">
+
+import {
+
+    auth,
+    googleProvider,
+    signInWithPopup,
+    signInWithEmailAndPassword
+
+} from "./js/firebase-config.js";
+
+
+const loginForm =
+    document.getElementById("loginForm");
+
+
+const googleBtn =
+    document.getElementById("googleBtn");
+
+
+const message =
+    document.getElementById("message");
+
+
+/* EMAIL LOGIN */
+
+loginForm.addEventListener(
+    "submit",
+    async function(event){
+
+        event.preventDefault();
+
+        const email =
+            document.getElementById("email").value.trim();
+
+        const password =
+            document.getElementById("password").value;
+
+
+        message.innerText =
+            "Logging in...";
+
+
+        try{
+
+            await signInWithEmailAndPassword(
+                auth,
+                email,
+                password
+            );
+
+
+            window.location.href =
+                "dashboard.html";
+
+
+        }catch(error){
+
+            console.error(error);
+
+            message.innerText =
+                "❌ " + getErrorMessage(error.code);
+
+        }
+
+    }
+);
+
+
+/* GOOGLE LOGIN */
+
+googleBtn.addEventListener(
+    "click",
+    async function(){
+
+        message.innerText =
+            "Opening Google login...";
+
+
+        try{
+
+            await signInWithPopup(
+                auth,
+                googleProvider
+            );
+
+
+            window.location.href =
+                "dashboard.html";
+
+
+        }catch(error){
+
+            console.error(error);
+
+            message.innerText =
+                "❌ " + getErrorMessage(error.code);
+
+        }
+
+    }
+);
+
+
+/* ERROR MESSAGES */
+
+function getErrorMessage(code){
+
+    switch(code){
+
+        case "auth/invalid-credential":
+            return "Email or password is incorrect.";
+
+        case "auth/user-not-found":
+            return "No account found with this email.";
+
+        case "auth/wrong-password":
+            return "Incorrect password.";
+
+        case "auth/popup-closed-by-user":
+            return "Google login was cancelled.";
+
+        case "auth/popup-blocked":
+            return "Your browser blocked the Google popup.";
+
+        case "auth/unauthorized-domain":
+            return "This website domain is not authorized in Firebase.";
+
+        default:
+            return "Login failed. Please try again.";
+
+    }
+
+}
+
+</script>
+
 
 </body>
 </html>
