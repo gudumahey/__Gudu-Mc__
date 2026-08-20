@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>GUDU MC | YouTuber Apply</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    min-height:100vh;
+    font-family:Arial,sans-serif;
+    color:white;
+    background:
+    radial-gradient(circle at 50% 10%,#263d68 0%,#11182c 45%,#070a12 100%);
+    padding:20px;
+}
+
+.topbar{
+    max-width:1100px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 20px;
+    background:rgba(10,16,30,.8);
+    border:1px solid rgba(120,150,255,.25);
+    border-radius:15px;
+    backdrop-filter:blur(15px);
+}
+
+.logo{
+    font-size:24px;
+    font-weight:900;
+    letter-spacing:4px;
+    background:linear-gradient(90deg,#fff,#83a5ff,#fff);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.profile{
+    width:44px;
+    height:44px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#18233d;
+    border:2px solid #718cff;
+    text-decoration:none;
+    font-size:20px;
+}
+
+.container{
+    max-width:800px;
+    margin:55px auto;
+}
+
+.form-box{
+    padding:35px;
+    border-radius:22px;
+    background:rgba(15,22,40,.9);
+    border:1px solid rgba(120,150,255,.25);
+    box-shadow:0 20px 60px rgba(0,0,0,.45);
+}
+
+.header{
+    text-align:center;
+    margin-bottom:35px;
+}
+
+.icon{
+    font-size:60px;
+    margin-bottom:10px;
+}
+
+h1{
+    font-size:clamp(35px,7vw,60px);
+    font-weight:900;
+    letter-spacing:2px;
+}
+
+.header p{
+    color:#8995ae;
+    margin-top:12px;
+    line-height:1.6;
+}
+
+.question{
+    margin-bottom:22px;
+}
+
+.question label{
+    display:block;
+    margin-bottom:8px;
+    font-weight:bold;
+    color:#dce3f5;
+}
+
+.required{
+    color:#ff6678;
+}
+
+input,
+textarea,
+select{
+    width:100%;
+    padding:14px;
+    border-radius:10px;
+    border:1px solid #2d3b5b;
+    background:#0a1020;
+    color:white;
+    outline:none;
+    font-family:Arial,sans-serif;
+    font-size:14px;
+}
+
+textarea{
+    min-height:110px;
+    resize:vertical;
+}
+
+input:focus,
+textarea:focus,
+select:focus{
+    border-color:#718cff;
+    box-shadow:0 0 15px rgba(100,130,255,.15);
+}
+
+.submit{
+    width:100%;
+    padding:16px;
+    border:0;
+    border-radius:11px;
+    color:white;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    background:linear-gradient(135deg,#5578ff,#7655ff);
+    transition:.3s;
+}
+
+.submit:hover{
+    transform:translateY(-3px);
+    box-shadow:0 0 30px rgba(85,120,255,.45);
+}
+
+.back{
+    display:block;
+    text-align:center;
+    margin-top:20px;
+    color:#77839c;
+    text-decoration:none;
+}
+
+@media(max-width:600px){
+
+    body{
+        padding:12px;
+    }
+
+    .form-box{
+        padding:25px 18px;
+    }
+
+    .logo{
+        font-size:20px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<header class="topbar">
+
+    <div class="logo">
+        GUDU MC
+    </div>
+
+    <a href="profile.html" class="profile">
+        👤
+    </a>
+
+</header>
+
+
+<main class="container">
+
+<div class="form-box">
+
+    <div class="header">
+
+        <div class="icon">
+            🎥
+        </div>
+
+        <h1>
+            YOUTUBER APPLY
+        </h1>
+
+        <p>
+            Think you can create amazing content for GUDU MC?
+            Complete the application below.
+        </p>
+
+    </div>
+
+
+    <form id="youtubeForm">
+
+
+        <div class="question">
+
+            <label>
+                Minecraft / Bloxd Username
+                <span class="required">*</span>
+            </label>
+
+            <input
+                type="text"
+                required
+                placeholder="Enter your username">
+
+        </div>
+
+
+        <div class="question">
+
+            <label>
+                Discord Username
+                <span class="required">*</span>
+            </label>
+
+            <input
+                type="text"
+                required
+                placeholder="Enter your Discord username">
+
+        </div>
+
+
+        <div class="question">
+
+            <label>
+                Your YouTube Channel Link
+                <span class="required">*</span>
+            </label>
+
+            <input
+                type="url"
+                required
+                placeholder="https://youtube.com/@yourchannel">
+
+        </div>
+
+
+        <div class="question">
+
+            <label>
+                How many subscribers do you have?
+                <span class="required">*</span>
+            </label>
+
+            <input
+                type="number"
+                min="0"
+                required
+                placeholder="Subscriber count">
+
+        </div>
+
+
+        <div class="question">
+
+            <label>
+                How often do you upload videos?
+                <span class="required">*</span>
+            </label>
+
+            <select required>
+
+                <option value="">
+                    Select an option
+                </option>
+
+                <option>
+                    Daily
+                </option>
+
+                <option>
+                    Several times a week
+                </option>
+
+                <option>
+                    Once a week
+                </option>
+
+                <option>
+                    A few times a month
+                </option>
+
+                <option>
+                    Rarely
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="question">
+
+            <label>
+                What type of content do you create?
+                <span class="required">*</span>
+            </label>
+
+            <textarea
+                required
+                placeholder="Tell us about your content..."></textarea>
+
+        </div>
+
+
+        <div class="question">
+
+            <label>
+                Why do you want to become a GUDU MC YouTuber?
+                <span class="required">*</span>
+            </label>
+
+            <textarea
+                required
+                placeholder="Write your answer..."></textarea>
+
+        </div>
+
+
+        <div class="question">
+
+            <label>
+                What can you bring to the GUDU MC community?
+                <span class="required">*</span>
+            </label>
+
+            <textarea
+                required
+                placeholder="Explain your ideas..."></textarea>
+
+        </div>
+
+
+        <div class="question">
+
+            <label>
+                Have you created Minecraft/Bloxd content before?
+                <span class="required">*</span>
+            </label>
+
+            <textarea
+                required
+                placeholder="Tell us about your previous content..."></textarea>
+
+        </div>
+
+
+        <div class="question">
+
+            <label>
+                Anything else you want us to know?
+            </label>
+
+            <textarea
+                placeholder="Optional..."></textarea>
+
+        </div>
+
+
+        <button
+            type="submit"
+            class="submit">
+            🚀 SUBMIT YOUTUBER APPLICATION
+        </button>
+
+        <a
+            href="dashboard.html"
+            class="back">
+            ← Back to Dashboard
+        </a>
+
+    </form>
+
+</div>
+
+</main>
+
+
+<script>
+
+document.getElementById("youtubeForm")
+.addEventListener("submit",function(event){
+
+    event.preventDefault();
+
+    alert(
+        "Your application is ready! Firebase saving will be connected next."
+    );
+
+});
+
+</script>
+
+</body>
+</html>
