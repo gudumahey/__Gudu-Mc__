@@ -1,5 +1,5 @@
 // ==========================================
-// GUDU MC FIREBASE CONFIG
+// GUDU MC - FIREBASE CONFIG
 // ==========================================
 
 import {
@@ -44,17 +44,11 @@ import {
 // ==========================================
 
 const firebaseConfig = {
-
     apiKey: "AIzaSyAJtiPsf1vx_KmznFFEhiHbtQGmdIxGv9k",
-
     authDomain: "gudu-mc-c1681.firebaseapp.com",
-
     projectId: "gudu-mc-c1681",
-
     storageBucket: "gudu-mc-c1681.firebasestorage.app",
-
     messagingSenderId: "886551667549",
-
     appId: "1:886551667549:web:4b32d0aeb7acb2c100feb4"
 };
 
@@ -67,7 +61,7 @@ const app = initializeApp(firebaseConfig);
 
 
 // ==========================================
-// FIREBASE SERVICES
+// SERVICES
 // ==========================================
 
 const auth = getAuth(app);
@@ -82,6 +76,10 @@ const storage = getStorage(app);
 // ==========================================
 
 const googleProvider = new GoogleAuthProvider();
+
+googleProvider.setCustomParameters({
+    prompt: "select_account"
+});
 
 
 // ==========================================
