@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>GUDU MC | Staff Apply</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    min-height:100vh;
+    font-family:Arial, sans-serif;
+    color:white;
+    background:
+    radial-gradient(circle at 50% 20%, #263d68 0%, #11182c 45%, #070a12 100%);
+    overflow:hidden;
+}
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:25px;
+}
+
+.content{
+    max-width:850px;
+    animation:show 1.2s ease;
+}
+
+@keyframes show{
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.small-title{
+    font-size:14px;
+    letter-spacing:5px;
+    color:#8ea7ff;
+    margin-bottom:15px;
+}
+
+.logo{
+    font-size:clamp(55px,12vw,130px);
+    font-weight:900;
+    letter-spacing:8px;
+
+    background:linear-gradient(
+        90deg,
+        white,
+        #83a5ff,
+        white
+    );
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+
+    text-shadow:0 0 40px rgba(80,120,255,.4);
+
+    margin-bottom:15px;
+}
+
+.subtitle{
+    font-size:clamp(20px,4vw,32px);
+    margin-bottom:15px;
+}
+
+.description{
+    color:#b9c3d9;
+    line-height:1.7;
+    max-width:650px;
+    margin:auto;
+}
+
+.get-started{
+    display:inline-block;
+    margin-top:35px;
+    padding:16px 42px;
+
+    border-radius:12px;
+
+    background:linear-gradient(
+        135deg,
+        #5578ff,
+        #7655ff
+    );
+
+    color:white;
+    text-decoration:none;
+
+    font-weight:bold;
+
+    box-shadow:
+    0 0 20px rgba(85,120,255,.4),
+    0 10px 30px rgba(0,0,0,.4);
+
+    transition:.3s;
+}
+
+.get-started:hover{
+    transform:translateY(-5px) scale(1.03);
+
+    box-shadow:
+    0 0 35px rgba(85,120,255,.7),
+    0 15px 40px rgba(0,0,0,.5);
+}
+
+.footer{
+    position:fixed;
+    bottom:20px;
+    left:0;
+    width:100%;
+    text-align:center;
+    color:#66718a;
+    font-size:12px;
+}
+
+@media(max-width:600px){
+
+    .logo{
+        letter-spacing:3px;
+    }
+
+    .description{
+        font-size:14px;
+    }
+
+    .get-started{
+        width:90%;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<section class="hero">
+
+<div class="content">
+
+<div class="small-title">
+GUDU MC NETWORK
+</div>
+
+<h1 class="logo">
+GUDU MC
+</h1>
+
+<h2 class="subtitle">
+Welcome to GUDU MC Staff Apply
+</h2>
+
+<p class="description">
+Think you have what it takes to join the GUDU MC
+staff team? Apply now and become part of our community.
+</p>
+
+<a href="login.html" class="get-started">
+GET STARTED
+</a>
+
+</div>
+
+</section>
+
+<div class="footer">
+© 2026 GUDU MC • Staff Application Portal
+</div>
+
+</body>
+</html>
