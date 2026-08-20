@@ -4,6 +4,7 @@
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>GUDU MC | Login</title>
@@ -17,7 +18,9 @@
 }
 
 body{
+
     min-height:100vh;
+
     display:flex;
     justify-content:center;
     align-items:center;
@@ -33,12 +36,15 @@ body{
     );
 
     color:white;
+
     padding:20px;
 }
 
 .login-box{
+
     width:100%;
     max-width:430px;
+
     padding:35px;
 
     background:rgba(15,22,40,.9);
@@ -57,6 +63,7 @@ body{
 }
 
 @keyframes show{
+
     from{
         opacity:0;
         transform:translateY(25px);
@@ -66,13 +73,17 @@ body{
         opacity:1;
         transform:translateY(0);
     }
+
 }
 
 .logo{
+
     text-align:center;
 
     font-size:42px;
+
     font-weight:900;
+
     letter-spacing:5px;
 
     background:
@@ -84,27 +95,34 @@ body{
     );
 
     -webkit-background-clip:text;
+
     -webkit-text-fill-color:transparent;
 }
 
 .subtitle{
+
     text-align:center;
+
     color:#9da9c4;
 
     margin-top:8px;
+
     margin-bottom:30px;
 }
 
 label{
+
     display:block;
 
     margin-bottom:7px;
 
     color:#cbd4eb;
+
     font-size:14px;
 }
 
 input{
+
     width:100%;
 
     padding:14px;
@@ -125,31 +143,22 @@ input{
 }
 
 input:focus{
+
     border-color:#6685ff;
 
     box-shadow:
     0 0 12px rgba(102,133,255,.2);
 }
 
-.login-btn,
-.google-btn{
+.login-btn{
+
     width:100%;
 
-    padding:14px;
+    padding:15px;
+
+    border:none;
 
     border-radius:10px;
-
-    font-size:15px;
-
-    cursor:pointer;
-
-    font-weight:bold;
-
-    transition:.3s;
-}
-
-.login-btn{
-    border:none;
 
     background:
     linear-gradient(
@@ -159,9 +168,18 @@ input:focus{
     );
 
     color:white;
+
+    font-weight:bold;
+
+    font-size:16px;
+
+    cursor:pointer;
+
+    transition:.3s;
 }
 
 .login-btn:hover{
+
     transform:translateY(-2px);
 
     box-shadow:
@@ -169,25 +187,43 @@ input:focus{
 }
 
 .google-btn{
+
+    width:100%;
+
     margin-top:12px;
+
+    padding:14px;
+
+    border-radius:10px;
 
     border:1px solid #34415f;
 
     background:#111a2d;
 
     color:white;
+
+    font-size:15px;
+
+    cursor:pointer;
+
+    transition:.3s;
 }
 
 .google-btn:hover{
+
     background:#18233b;
 }
 
-button:disabled{
+.google-btn:disabled,
+.login-btn:disabled{
+
     opacity:.6;
+
     cursor:not-allowed;
 }
 
 .divider{
+
     display:flex;
 
     align-items:center;
@@ -203,6 +239,7 @@ button:disabled{
 
 .divider::before,
 .divider::after{
+
     content:"";
 
     height:1px;
@@ -213,18 +250,24 @@ button:disabled{
 }
 
 .message{
-    min-height:20px;
 
     margin-top:15px;
+
+    padding:10px;
+
+    border-radius:8px;
 
     text-align:center;
 
     color:#ff8c9a;
 
     font-size:13px;
+
+    word-break:break-word;
 }
 
 .signup{
+
     text-align:center;
 
     margin-top:22px;
@@ -235,6 +278,7 @@ button:disabled{
 }
 
 .signup a{
+
     color:#7d9aff;
 
     text-decoration:none;
@@ -243,6 +287,7 @@ button:disabled{
 }
 
 .back{
+
     display:block;
 
     text-align:center;
@@ -259,26 +304,32 @@ button:disabled{
 @media(max-width:500px){
 
     .login-box{
+
         padding:25px 20px;
     }
 
     .logo{
+
         font-size:35px;
     }
+
 }
 
 </style>
 
 </head>
 
+
 <body>
 
 
 <div class="login-box">
 
+
     <h1 class="logo">
         GUDU MC
     </h1>
+
 
     <p class="subtitle">
         Login to continue
@@ -287,9 +338,11 @@ button:disabled{
 
     <form id="loginForm">
 
+
         <label>
             Email
         </label>
+
 
         <input
             id="email"
@@ -302,6 +355,7 @@ button:disabled{
         <label>
             Password
         </label>
+
 
         <input
             id="password"
@@ -320,11 +374,14 @@ button:disabled{
 
         </button>
 
+
     </form>
 
 
     <div class="divider">
+
         OR
+
     </div>
 
 
@@ -349,7 +406,9 @@ button:disabled{
         Don't have an account?
 
         <a href="signup.html">
+
             Sign Up
+
         </a>
 
     </div>
@@ -363,33 +422,46 @@ button:disabled{
 
     </a>
 
+
 </div>
 
 
 <script type="module">
 
+
 import {
+
     auth,
+
     googleProvider,
+
     signInWithPopup,
+
     signInWithEmailAndPassword
+
 } from "./js/firebase-config.js";
 
 
 const loginForm =
     document.getElementById("loginForm");
 
+
 const googleBtn =
     document.getElementById("googleBtn");
 
+
 const loginBtn =
     document.getElementById("loginBtn");
+
 
 const message =
     document.getElementById("message");
 
 
-/* EMAIL LOGIN */
+/* ==========================================
+   EMAIL LOGIN
+========================================== */
+
 
 loginForm.addEventListener(
     "submit",
@@ -397,20 +469,29 @@ loginForm.addEventListener(
 
         event.preventDefault();
 
+
         const email =
-            document.getElementById("email").value.trim();
+            document
+            .getElementById("email")
+            .value
+            .trim();
+
 
         const password =
-            document.getElementById("password").value;
+            document
+            .getElementById("password")
+            .value;
 
-        message.style.color = "#ffc857";
 
         message.innerText =
             "Logging in...";
 
+
         loginBtn.disabled = true;
 
+
         try{
+
 
             await signInWithEmailAndPassword(
                 auth,
@@ -418,105 +499,130 @@ loginForm.addEventListener(
                 password
             );
 
-            window.location.href =
-                "dashboard.html";
+
+            message.innerText =
+                "✅ Login successful!";
+
+
+            setTimeout(
+                function(){
+
+                    window.location.href =
+                        "dashboard.html";
+
+                },
+                500
+            );
+
 
         }
 
         catch(error){
 
-            console.error(error);
 
-            message.style.color = "#ff8c9a";
+            console.error(
+                "EMAIL LOGIN ERROR:",
+                error
+            );
+
 
             message.innerText =
-                firebaseError(error.code);
+                "❌ " +
+                error.code +
+                "\n\n" +
+                error.message;
+
 
             loginBtn.disabled = false;
+
         }
 
     }
 );
 
 
-/* GOOGLE LOGIN */
+/* ==========================================
+   GOOGLE LOGIN
+========================================== */
+
 
 googleBtn.addEventListener(
     "click",
     async function(){
 
-        message.style.color = "#ffc857";
 
         message.innerText =
             "Opening Google login...";
 
+
         googleBtn.disabled = true;
+
 
         try{
 
-            await signInWithPopup(
-                auth,
-                googleProvider
+
+            const result =
+                await signInWithPopup(
+                    auth,
+                    googleProvider
+                );
+
+
+            console.log(
+                "GOOGLE LOGIN SUCCESS:",
+                result.user
             );
 
-            window.location.href =
-                "dashboard.html";
+
+            message.innerText =
+                "✅ Google login successful!";
+
+
+            setTimeout(
+                function(){
+
+                    window.location.href =
+                        "dashboard.html";
+
+                },
+                500
+            );
+
 
         }
 
         catch(error){
 
-            console.error(error);
 
-            message.style.color = "#ff8c9a";
+            console.error(
+                "GOOGLE LOGIN ERROR:",
+                error
+            );
+
+
+            /*
+             * IMPORTANT:
+             * Show the REAL Firebase error.
+             */
 
             message.innerText =
-                firebaseError(error.code);
+                "❌ " +
+                error.code +
+                "\n\n" +
+                error.message;
+
 
             googleBtn.disabled = false;
+
         }
 
     }
 );
 
 
-/* FIREBASE ERROR */
-
-function firebaseError(code){
-
-    switch(code){
-
-        case "auth/invalid-credential":
-            return "❌ Email or password is incorrect.";
-
-        case "auth/user-not-found":
-            return "❌ Account not found.";
-
-        case "auth/wrong-password":
-            return "❌ Incorrect password.";
-
-        case "auth/invalid-email":
-            return "❌ Enter a valid email.";
-
-        case "auth/popup-closed-by-user":
-            return "❌ Google login was cancelled.";
-
-        case "auth/popup-blocked":
-            return "❌ Google popup was blocked by your browser.";
-
-        case "auth/unauthorized-domain":
-            return "❌ This website domain is not authorized in Firebase.";
-
-        case "auth/network-request-failed":
-            return "❌ Check your internet connection.";
-
-        default:
-            return "❌ Login failed. Please try again.";
-    }
-
-}
-
 </script>
 
+
 </body>
+
 </html>
