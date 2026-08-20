@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -20,7 +22,12 @@ body{
     color:white;
 
     background:
-    radial-gradient(circle at 50% 10%,#263d68 0%,#11182c 45%,#070a12 100%);
+    radial-gradient(
+        circle at 50% 10%,
+        #263d68 0%,
+        #11182c 45%,
+        #070a12 100%
+    );
 
     padding:25px;
 }
@@ -62,10 +69,15 @@ body{
     -webkit-text-fill-color:transparent;
 }
 
+.status{
+    font-size:12px;
+    color:#7dffad;
+}
+
 /* PROFILE */
 
 .container{
-    max-width:650px;
+    max-width:700px;
     margin:50px auto;
 }
 
@@ -106,12 +118,12 @@ body{
 /* DP */
 
 .avatar-wrapper{
-    position:relative;
-
     width:140px;
     height:140px;
 
     margin:0 auto 20px;
+
+    position:relative;
 }
 
 .avatar{
@@ -130,32 +142,31 @@ body{
     background:#111a2d;
 }
 
-.upload-label{
-    position:absolute;
+/* DEFAULT AVATAR */
 
-    right:2px;
-    bottom:2px;
-
-    width:40px;
-    height:40px;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
+.default-avatar{
+    width:140px;
+    height:140px;
 
     border-radius:50%;
 
-    background:#5578ff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-    cursor:pointer;
+    font-size:65px;
 
-    font-size:18px;
+    background:
+    linear-gradient(
+        135deg,
+        #263d68,
+        #11182c
+    );
 
-    border:3px solid #10172a;
-}
+    border:4px solid #718cff;
 
-#photoInput{
-    display:none;
+    box-shadow:
+    0 0 25px rgba(90,120,255,.6);
 }
 
 /* NAME */
@@ -170,6 +181,15 @@ body{
 .email{
     color:#8995ae;
     margin-top:6px;
+}
+
+.uid{
+    color:#56627b;
+    font-size:11px;
+
+    margin-top:8px;
+
+    word-break:break-all;
 }
 
 /* BUTTONS */
@@ -204,13 +224,9 @@ body{
     transform:translateY(-3px);
 }
 
-.edit{
-    background:#1b2742;
-    border:1px solid #34456c;
-}
-
 .applications{
-    background:linear-gradient(
+    background:
+    linear-gradient(
         135deg,
         #5578ff,
         #7655ff
@@ -223,6 +239,99 @@ body{
 .logout{
     background:#351923;
     border:1px solid #6b3040;
+}
+
+.logout:hover{
+    box-shadow:
+    0 0 20px rgba(255,70,100,.25);
+}
+
+/* APPLICATIONS */
+
+#applicationsBox{
+    display:none;
+
+    margin-top:25px;
+
+    text-align:left;
+
+    background:rgba(10,16,30,.8);
+
+    border:1px solid rgba(120,150,255,.2);
+
+    border-radius:18px;
+
+    padding:20px;
+}
+
+.application-title{
+    text-align:center;
+
+    font-size:22px;
+
+    margin-bottom:18px;
+}
+
+.application-card{
+    background:#111a2d;
+
+    border:1px solid #293858;
+
+    border-radius:14px;
+
+    padding:18px;
+
+    margin-top:12px;
+}
+
+.application-rank{
+    font-size:20px;
+    font-weight:bold;
+
+    color:#91a5ff;
+}
+
+.application-info{
+    color:#8d99b3;
+
+    font-size:13px;
+
+    margin-top:8px;
+
+    line-height:1.7;
+}
+
+.pending{
+    color:#ffd166;
+    font-weight:bold;
+}
+
+.accepted{
+    color:#6dff9c;
+    font-weight:bold;
+}
+
+.rejected{
+    color:#ff6678;
+    font-weight:bold;
+}
+
+.empty{
+    text-align:center;
+
+    color:#8995ae;
+
+    padding:20px;
+}
+
+/* LOADING */
+
+.loading{
+    color:#91a5ff;
+
+    margin-top:15px;
+
+    font-size:14px;
 }
 
 /* BACK */
@@ -263,12 +372,19 @@ body{
         font-size:20px;
     }
 
+    .name{
+        font-size:25px;
+    }
+
 }
 
 </style>
+
 </head>
 
+
 <body>
+
 
 <!-- TOP BAR -->
 
@@ -278,11 +394,16 @@ body{
         GUDU MC
     </div>
 
-    <div>
-        👤
+    <div
+        class="status"
+        id="status">
+
+        ● CONNECTING
+
     </div>
 
 </header>
+
 
 
 <!-- PROFILE -->
@@ -291,6 +412,7 @@ body{
 
 <section class="profile-card">
 
+
     <!-- PROFILE PHOTO -->
 
     <div class="avatar-wrapper">
@@ -298,23 +420,21 @@ body{
         <img
             id="profilePhoto"
             class="avatar"
-            src="https://via.placeholder.com/140"
+            src=""
             alt="Profile Picture"
+            style="display:none;"
         >
 
-        <label
-            for="photoInput"
-            class="upload-label">
-            📷
-        </label>
+        <div
+            id="defaultAvatar"
+            class="default-avatar">
 
-        <input
-            type="file"
-            id="photoInput"
-            accept="image/*"
-        >
+            👤
+
+        </div>
 
     </div>
+
 
 
     <!-- USER INFO -->
@@ -322,123 +442,590 @@ body{
     <h1
         class="name"
         id="userName">
-        GUDU PLAYER
+
+        Loading...
+
     </h1>
+
 
     <p
         class="email"
         id="userEmail">
-        user@example.com
+
+        Loading...
+
     </p>
+
+
+    <p
+        class="uid"
+        id="userUid">
+
+    </p>
+
 
 
     <!-- BUTTONS -->
 
     <div class="buttons">
 
-        <button
-            class="btn edit"
-            onclick="editName()">
-            ✏️ EDIT PROFILE
-        </button>
 
         <button
             class="btn applications"
-            onclick="openApplications()">
+            id="applicationsButton">
+
             📋 MY APPLICATIONS
+
         </button>
+
 
         <button
             class="btn logout"
-            onclick="logout()">
+            id="logoutButton">
+
             🚪 LOGOUT
+
         </button>
 
+
     </div>
+
+
+
+    <!-- LOADING -->
+
+    <div
+        class="loading"
+        id="loadingMessage">
+
+    </div>
+
+
+
+    <!-- APPLICATIONS -->
+
+    <div id="applicationsBox">
+
+        <div class="application-title">
+
+            📋 MY APPLICATIONS
+
+        </div>
+
+
+        <div id="applicationsList">
+
+        </div>
+
+    </div>
+
 
 
     <a
         href="dashboard.html"
         class="back">
+
         ← Back to Dashboard
+
     </a>
+
 
 </section>
 
 </main>
 
 
-<script>
 
-/* PHOTO PREVIEW */
+<!-- ==========================================
+     FIREBASE
+========================================== -->
 
-const photoInput =
-    document.getElementById("photoInput");
+<script type="module">
+
+
+import {
+
+    auth,
+    db,
+
+    onAuthStateChanged,
+
+    signOut,
+
+    collection,
+    query,
+    where,
+    getDocs
+
+} from "./js/firebase-config.js";
+
+
+
+/* ==========================================
+   ELEMENTS
+========================================== */
+
+const userName =
+    document.getElementById("userName");
+
+const userEmail =
+    document.getElementById("userEmail");
+
+const userUid =
+    document.getElementById("userUid");
 
 const profilePhoto =
     document.getElementById("profilePhoto");
 
+const defaultAvatar =
+    document.getElementById("defaultAvatar");
 
-photoInput.addEventListener("change", function(){
+const status =
+    document.getElementById("status");
 
-    const file = this.files[0];
+const logoutButton =
+    document.getElementById("logoutButton");
 
-    if(file){
+const applicationsButton =
+    document.getElementById("applicationsButton");
 
-        const reader =
-            new FileReader();
+const applicationsBox =
+    document.getElementById("applicationsBox");
 
-        reader.onload = function(e){
+const applicationsList =
+    document.getElementById("applicationsList");
+
+const loadingMessage =
+    document.getElementById("loadingMessage");
+
+
+
+/* ==========================================
+   CURRENT USER
+========================================== */
+
+let currentUser = null;
+
+
+
+/* ==========================================
+   AUTH STATE
+========================================== */
+
+onAuthStateChanged(
+    auth,
+    async function(user){
+
+        if(!user){
+
+            window.location.href =
+                "login.html";
+
+            return;
+
+        }
+
+
+        currentUser = user;
+
+
+        /* USER NAME */
+
+        userName.textContent =
+            user.displayName ||
+            "GUDU PLAYER";
+
+
+        /* EMAIL */
+
+        userEmail.textContent =
+            user.email ||
+            "No email";
+
+
+        /* UID */
+
+        userUid.textContent =
+            "UID: " + user.uid;
+
+
+        /* PHOTO */
+
+        if(user.photoURL){
 
             profilePhoto.src =
-                e.target.result;
+                user.photoURL;
 
-        };
+            profilePhoto.style.display =
+                "block";
 
-        reader.readAsDataURL(file);
+            defaultAvatar.style.display =
+                "none";
+
+        }else{
+
+            profilePhoto.style.display =
+                "none";
+
+            defaultAvatar.style.display =
+                "flex";
+
+        }
+
+
+        /* STATUS */
+
+        status.textContent =
+            "● ONLINE";
+
+
+        status.style.color =
+            "#7dffad";
+
     }
+);
 
-});
 
 
-/* EDIT NAME */
+/* ==========================================
+   LOGOUT
+========================================== */
 
-function editName(){
+logoutButton.addEventListener(
+    "click",
+    async function(){
 
-    const currentName =
-        document.getElementById("userName").innerText;
+        const confirmLogout =
+            confirm(
+                "Are you sure you want to logout?"
+            );
 
-    const newName =
-        prompt("Enter your new name:",currentName);
 
-    if(newName && newName.trim() !== ""){
+        if(!confirmLogout){
 
-        document.getElementById("userName").innerText =
-            newName.trim();
+            return;
+
+        }
+
+
+        try{
+
+            logoutButton.disabled =
+                true;
+
+            logoutButton.textContent =
+                "⏳ LOGGING OUT...";
+
+
+            await signOut(auth);
+
+
+            window.location.href =
+                "login.html";
+
+
+        }catch(error){
+
+            console.error(error);
+
+
+            alert(
+                "❌ Logout failed.\n\n" +
+                error.message
+            );
+
+
+            logoutButton.disabled =
+                false;
+
+            logoutButton.textContent =
+                "🚪 LOGOUT";
+
+        }
 
     }
+);
+
+
+
+/* ==========================================
+   MY APPLICATIONS
+========================================== */
+
+applicationsButton.addEventListener(
+    "click",
+    async function(){
+
+        if(!currentUser){
+
+            alert(
+                "❌ Please login first."
+            );
+
+            return;
+
+        }
+
+
+        applicationsBox.style.display =
+            "block";
+
+
+        applicationsList.innerHTML =
+            "<div class='empty'>⏳ Loading applications...</div>";
+
+
+        try{
+
+
+            /*
+             * Find applications belonging
+             * to the currently logged-in user.
+             */
+
+            const applicationsQuery =
+                query(
+
+                    collection(
+                        db,
+                        "applications"
+                    ),
+
+                    where(
+                        "uid",
+                        "==",
+                        currentUser.uid
+                    )
+
+                );
+
+
+            const snapshot =
+                await getDocs(
+                    applicationsQuery
+                );
+
+
+            applicationsList.innerHTML =
+                "";
+
+
+            /* NO APPLICATIONS */
+
+            if(snapshot.empty){
+
+                applicationsList.innerHTML = `
+
+                    <div class="empty">
+
+                        📭 You have not submitted
+                        any applications yet.
+
+                        <br><br>
+
+                        Go to Staff Apply and
+                        submit an application.
+
+                    </div>
+
+                `;
+
+                return;
+
+            }
+
+
+
+            /* APPLICATIONS */
+
+            snapshot.forEach(
+                function(doc){
+
+                    const data =
+                        doc.data();
+
+
+                    const rank =
+                        data.rank ||
+                        "Unknown Rank";
+
+
+                    const applicationStatus =
+                        data.status ||
+                        "Pending";
+
+
+                    let statusClass =
+                        "pending";
+
+
+                    if(
+                        applicationStatus
+                        .toLowerCase()
+                        === "accepted"
+                    ){
+
+                        statusClass =
+                            "accepted";
+
+                    }
+
+
+                    if(
+                        applicationStatus
+                        .toLowerCase()
+                        === "rejected"
+                    ){
+
+                        statusClass =
+                            "rejected";
+
+                    }
+
+
+                    let dateText =
+                        "Date unavailable";
+
+
+                    if(data.createdAt){
+
+                        try{
+
+                            dateText =
+                                data.createdAt
+                                .toDate()
+                                .toLocaleString();
+
+                        }catch(error){
+
+                            dateText =
+                                "Date unavailable";
+
+                        }
+
+                    }
+
+
+                    const card =
+                        document.createElement(
+                            "div"
+                        );
+
+
+                    card.className =
+                        "application-card";
+
+
+                    card.innerHTML = `
+
+                        <div class="application-rank">
+
+                            ${rank.toUpperCase()}
+
+                        </div>
+
+
+                        <div class="application-info">
+
+                            🎮 Username:
+                            ${escapeHTML(
+                                data.username ||
+                                "Not provided"
+                            )}
+
+                            <br>
+
+                            💬 Discord:
+                            ${escapeHTML(
+                                data.discord ||
+                                "Not provided"
+                            )}
+
+                            <br>
+
+                            📅 Submitted:
+                            ${dateText}
+
+                            <br>
+
+                            📌 Status:
+
+                            <span class="${statusClass}">
+
+                                ${escapeHTML(
+                                    applicationStatus
+                                )}
+
+                            </span>
+
+                        </div>
+
+                    `;
+
+
+                    applicationsList.appendChild(
+                        card
+                    );
+
+                }
+            );
+
+
+        }catch(error){
+
+            console.error(
+                "APPLICATION ERROR:",
+                error
+            );
+
+
+            applicationsList.innerHTML = `
+
+                <div class="empty">
+
+                    ❌ Could not load applications.
+
+                    <br><br>
+
+                    ${escapeHTML(
+                        error.message
+                    )}
+
+                </div>
+
+            `;
+
+        }
+
+    }
+);
+
+
+
+/* ==========================================
+   SECURITY
+========================================== */
+
+function escapeHTML(value){
+
+    return String(value)
+
+        .replaceAll("&","&amp;")
+
+        .replaceAll("<","&lt;")
+
+        .replaceAll(">","&gt;")
+
+        .replaceAll('"',"&quot;")
+
+        .replaceAll("'","&#039;");
 
 }
 
-
-/* APPLICATIONS */
-
-function openApplications(){
-
-    alert("My Applications will be connected in the next step.");
-
-}
-
-
-/* LOGOUT */
-
-function logout(){
-
-    alert("Logout will be connected with Firebase in the next step.");
-
-}
 
 </script>
 
+
 </body>
+
 </html>
