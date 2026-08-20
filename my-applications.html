@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>GUDU MC | My Applications</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    min-height:100vh;
+    font-family:Arial,sans-serif;
+    color:white;
+
+    background:
+    radial-gradient(circle at 50% 10%,#263d68 0%,#11182c 45%,#070a12 100%);
+
+    padding:20px;
+}
+
+.topbar{
+    max-width:1100px;
+    margin:auto;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:15px 20px;
+
+    background:rgba(10,16,30,.8);
+
+    border:1px solid rgba(120,150,255,.25);
+
+    border-radius:15px;
+
+    backdrop-filter:blur(15px);
+}
+
+.logo{
+    font-size:24px;
+    font-weight:900;
+    letter-spacing:4px;
+
+    background:linear-gradient(
+        90deg,
+        #fff,
+        #83a5ff,
+        #fff
+    );
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.profile{
+    width:44px;
+    height:44px;
+
+    border-radius:50%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:#18233d;
+
+    border:2px solid #718cff;
+
+    text-decoration:none;
+
+    font-size:20px;
+}
+
+.container{
+    max-width:900px;
+    margin:55px auto;
+}
+
+.header{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.header h1{
+    font-size:clamp(38px,7vw,60px);
+    font-weight:900;
+    letter-spacing:3px;
+}
+
+.header p{
+    margin-top:12px;
+    color:#8995ae;
+}
+
+/* APPLICATION CARD */
+
+.application{
+    padding:25px;
+
+    margin-bottom:18px;
+
+    border-radius:18px;
+
+    background:
+    linear-gradient(
+        145deg,
+        rgba(25,37,65,.95),
+        rgba(10,15,28,.95)
+    );
+
+    border:1px solid rgba(120,150,255,.2);
+
+    box-shadow:
+    0 15px 40px rgba(0,0,0,.35);
+}
+
+.application-top{
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:15px;
+}
+
+.rank{
+    font-size:21px;
+    font-weight:bold;
+}
+
+.date{
+    color:#75819b;
+    font-size:13px;
+    margin-top:7px;
+}
+
+/* STATUS */
+
+.status{
+    padding:8px 14px;
+
+    border-radius:20px;
+
+    font-size:12px;
+
+    font-weight:bold;
+
+    white-space:nowrap;
+}
+
+.pending{
+    color:#ffc84d;
+    background:rgba(255,190,60,.12);
+    border:1px solid rgba(255,190,60,.3);
+}
+
+.approved{
+    color:#50dc88;
+    background:rgba(50,220,130,.12);
+    border:1px solid rgba(50,220,130,.3);
+}
+
+.rejected{
+    color:#ff6b7d;
+    background:rgba(255,70,90,.12);
+    border:1px solid rgba(255,70,90,.3);
+}
+
+/* BUTTON */
+
+.view{
+    margin-top:20px;
+
+    padding:11px 18px;
+
+    border-radius:9px;
+
+    border:1px solid #40527c;
+
+    background:#253352;
+
+    color:white;
+
+    cursor:pointer;
+
+    font-weight:bold;
+
+    transition:.3s;
+}
+
+.view:hover{
+    transform:translateY(-2px);
+    background:#304268;
+}
+
+/* EMPTY */
+
+.empty{
+    text-align:center;
+
+    padding:60px 20px;
+
+    border:1px dashed #34415f;
+
+    border-radius:18px;
+
+    color:#75819b;
+
+    display:none;
+}
+
+/* MODAL */
+
+.modal{
+    display:none;
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.75);
+
+    z-index:100;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:20px;
+}
+
+.modal-box{
+    width:100%;
+
+    max-width:650px;
+
+    max-height:90vh;
+
+    overflow:auto;
+
+    background:#11182c;
+
+    border:1px solid #40527c;
+
+    border-radius:20px;
+
+    padding:30px;
+}
+
+.modal-box h2{
+    margin-bottom:20px;
+}
+
+.answer{
+    padding:15px;
+
+    margin-bottom:15px;
+
+    background:#0b1120;
+
+    border:1px solid #263554;
+
+    border-radius:12px;
+}
+
+.answer-title{
+    color:#8ea7ff;
+
+    font-size:13px;
+
+    font-weight:bold;
+
+    margin-bottom:7px;
+}
+
+.answer-text{
+    color:#d5dbea;
+    line-height:1.6;
+}
+
+.close{
+    width:100%;
+
+    padding:13px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:#293655;
+
+    color:white;
+
+    cursor:pointer;
+
+    font-weight:bold;
+}
+
+.back{
+    display:block;
+
+    text-align:center;
+
+    margin-top:30px;
+
+    color:#77839c;
+
+    text-decoration:none;
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+    body{
+        padding:12px;
+    }
+
+    .application-top{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .status{
+        align-self:flex-start;
+    }
+
+    .logo{
+        font-size:20px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<header class="topbar">
+
+    <div class="logo">
+        GUDU MC
+    </div>
+
+    <a
+        href="profile.html"
+        class="profile">
+        👤
+    </a>
+
+</header>
+
+
+<main class="container">
+
+    <div class="header">
+
+        <h1>
+            MY APPLICATIONS
+        </h1>
+
+        <p>
+            View your previous GUDU MC applications
+            and their current status.
+        </p>
+
+    </div>
+
+
+    <!-- APPLICATION 1 -->
+
+    <div class="application">
+
+        <div class="application-top">
+
+            <div>
+
+                <div class="rank">
+                    🛡️ Moderator
+                </div>
+
+                <div class="date">
+                    Submitted: August 20, 2026
+                </div>
+
+            </div>
+
+            <div class="status pending">
+                🟡 PENDING
+            </div>
+
+        </div>
+
+        <button
+            class="view"
+            onclick="viewApplication('Moderator')">
+
+            👁️ VIEW APPLICATION
+
+        </button>
+
+    </div>
+
+
+    <!-- APPLICATION 2 -->
+
+    <div class="application">
+
+        <div class="application-top">
+
+            <div>
+
+                <div class="rank">
+                    🎥 YouTuber
+                </div>
+
+                <div class="date">
+                    Submitted: August 18, 2026
+                </div>
+
+            </div>
+
+            <div class="status approved">
+                🟢 APPROVED
+            </div>
+
+        </div>
+
+        <button
+            class="view"
+            onclick="viewApplication('YouTuber')">
+
+            👁️ VIEW APPLICATION
+
+        </button>
+
+    </div>
+
+
+    <!-- APPLICATION 3 -->
+
+    <div class="application">
+
+        <div class="application-top">
+
+            <div>
+
+                <div class="rank">
+                    🎬 Media
+                </div>
+
+                <div class="date">
+                    Submitted: August 15, 2026
+                </div>
+
+            </div>
+
+            <div class="status rejected">
+                🔴 REJECTED
+            </div>
+
+        </div>
+
+        <button
+            class="view"
+            onclick="viewApplication('Media')">
+
+            👁️ VIEW APPLICATION
+
+        </button>
+
+    </div>
+
+
+    <a
+        href="dashboard.html"
+        class="back">
+
+        ← Back to Dashboard
+
+    </a>
+
+</main>
+
+
+<!-- MODAL -->
+
+<div
+    class="modal"
+    id="modal">
+
+    <div class="modal-box">
+
+        <h2 id="modalTitle">
+            Application
+        </h2>
+
+        <div class="answer">
+
+            <div class="answer-title">
+                APPLICATION STATUS
+            </div>
+
+            <div class="answer-text">
+                Your application status will appear here.
+            </div>
+
+        </div>
+
+        <div class="answer">
+
+            <div class="answer-title">
+                YOUR ANSWERS
+            </div>
+
+            <div class="answer-text">
+                Your submitted answers will be loaded
+                from Firebase after the database is connected.
+            </div>
+
+        </div>
+
+        <button
+            class="close"
+            onclick="closeModal()">
+
+            CLOSE
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+function viewApplication(type){
+
+    document.getElementById("modalTitle").innerText =
+        type + " APPLICATION";
+
+    document.getElementById("modal").style.display =
+        "flex";
+
+}
+
+function closeModal(){
+
+    document.getElementById("modal").style.display =
+        "none";
+
+}
+
+</script>
+
+</body>
+</html>
